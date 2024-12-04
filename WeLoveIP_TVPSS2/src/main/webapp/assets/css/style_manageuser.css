@@ -217,6 +217,11 @@ hr {
     .table-action-buttons button:hover {
         background-color: #ddd; /* Slightly darker on hover */
     }
+    
+    .table-action-buttons button.view {
+        background-color: #4169e1; /* Blue for Edit */
+        color: white;
+    }
 
     .table-action-buttons button.edit {
         background-color: #4CAF50; /* Green for Edit */
@@ -227,6 +232,10 @@ hr {
         background-color: #f44336; /* Red for Delete */
         color: white;
     }
+    
+    .table-action-buttons button.view:hover {
+        background-color: #00008b; /* Darker blue on hover */
+    }
 
     .table-action-buttons button.edit:hover {
         background-color: #367338; /* Darker green on hover */
@@ -235,4 +244,15 @@ hr {
     .table-action-buttons button.delete:hover {
         background-color: #962b23; /* Darker red on hover */
     }
+    
+    .status-work {
+    color: green;
+    font-weight: bold;
+	}
+
+	.status-damage {
+    color: red;
+    font-weight: bold;
+	}
+    
     
