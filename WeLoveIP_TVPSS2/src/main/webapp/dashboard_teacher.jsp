@@ -37,7 +37,11 @@ pageEncoding="UTF-8"%>
           <li><a href="#">School Version</a></li>
           <li><a href="#">Equipment Information</a></li>
           <li><a href="manage_user_teacher.jsp">Manage User Information</a></li>
-          <li><a href="crew_appliaction_teacher.jsp">Crew Application</a></li>
+          <li>
+            <a href="crew_application/crew_application_teacher.jsp"
+              >Crew Application</a
+            >
+          </li>
         </ul>
       </div>
 
