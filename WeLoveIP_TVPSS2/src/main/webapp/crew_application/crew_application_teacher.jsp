@@ -126,7 +126,7 @@ pageEncoding="UTF-8"%>
         <hr />
         <ul class="nav">
           <li><a href="../dashboard_teacher.jsp">Dashboard</a></li>
-          <li><a href="../school_information.jsp">School Information</a></li>
+          <li><a href="../school_info_teacher.jsp">School Information</a></li>
           <li><a href="../school_version.jsp">School Version</a></li>
           <li>
             <a href="../equipment_information.jsp">Equipment Information</a>
