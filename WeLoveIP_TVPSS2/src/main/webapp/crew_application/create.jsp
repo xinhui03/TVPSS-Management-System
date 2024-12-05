@@ -87,7 +87,9 @@ pageEncoding="UTF-8"%>
         </button>
         <hr />
         <ul class="nav">
-          <li><a href="dashboard_student.jsp" class="active">Dashboard</a></li>
+          <li>
+            <a href="../dashboard_student.jsp" class="active">Dashboard</a>
+          </li>
           <li><a href="#">Crew Application</a></li>
           <li><a href="#">Application Result</a></li>
         </ul>
@@ -106,7 +108,7 @@ pageEncoding="UTF-8"%>
 
         <h2>Submit Crew Application</h2>
         <div class="form-container">
-          <form action="process_submit_application.jsp" method="post">
+          <form action="list.jsp" method="post">
             <div class="form-group">
               <label for="studentName">Student Name</label>
               <input type="text" id="studentName" name="studentName" required />

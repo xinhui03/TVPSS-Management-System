@@ -104,9 +104,7 @@ pageEncoding="UTF-8"%>
             <a href="../manage_user_teacher.jsp">Manage User Information</a>
           </li>
           <li>
-            <a href="crew_application_teacher.jsp" style="color: blue"
-              >Crew Application</a
-            >
+            <a href="list.jsp" style="color: blue">Crew Application</a>
           </li>
         </ul>
       </div>
@@ -124,7 +122,7 @@ pageEncoding="UTF-8"%>
 
         <h2>Edit Crew Application</h2>
         <div class="form-container">
-          <form action="crew_application_teacher.jsp" method="post">
+          <form action="list.jsp" method="post">
             <div class="form-group">
               <label for="studentName">Student Name</label>
               <input

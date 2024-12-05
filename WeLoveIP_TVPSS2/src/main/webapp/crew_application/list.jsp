@@ -135,9 +135,7 @@ pageEncoding="UTF-8"%>
             <a href="../manage_user_teacher.jsp">Manage User Information</a>
           </li>
           <li>
-            <a href="crew_application_teacher.jsp" style="color: blue"
-              >Crew Application</a
-            >
+            <a href="list.jsp" style="color: blue">Crew Application</a>
           </li>
         </ul>
       </div>
@@ -198,7 +196,7 @@ pageEncoding="UTF-8"%>
                   <td class="action-buttons">
                     <button
                       class="icon-btn edit-btn"
-                      onclick="window.location.href='edit_crew_application.jsp?id=${application.id}'"
+                      onclick="window.location.href='edit.jsp?id=${application.id}'"
                     >
                       <i class="fas fa-edit"></i>
                     </button>
