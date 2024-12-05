@@ -5,6 +5,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.example.model.User;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,8 +81,8 @@ public class ManageUser_admin extends HttpServlet {
         // Find and update the user
         for (User user : users) {
             if (user.getId() == id) {
-                user.setName(name);
-                user.setEmail(email);
+                user.setUsername(name);
+//                user.setEmail(email);
                 user.setRole(role);
                 break;
             }

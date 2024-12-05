@@ -22,7 +22,7 @@
             <ul class="nav">
                 <li><a href="dashboard_teacher.jsp" class="active">Dashboard</a></li>
                 <li><a href="#">School Information</a></li>
-                <li><a href="#">School Version</a></li>
+                <li><a href="pageTeacher.jsp">School Version</a></li>
                 <li><a href="#">Equipment Information</a></li>
                 <li><a href="manage_user_teacher.jsp">Manage User Information</a></li>
             </ul>
