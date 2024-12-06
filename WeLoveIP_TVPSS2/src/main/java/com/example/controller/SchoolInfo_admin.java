@@ -18,9 +18,9 @@ public class SchoolInfo_admin extends HttpServlet {
        
     static {
         // Preloaded sample data
-        schools.add(new School(1, "SMK Air Tawar", "Kota Tinggi", "81900", "07-1234567", "airtawar@school.edu.my"));
-        schools.add(new School(2, "SMK Banang Jaya", "Batu Pahat", "83000", "07-7654321", "banangjaya@school.edu.my"));
-        schools.add(new School(3, "SMK Bandar Mas", "Kota Tinggi", "81900", "07-5432123", "bandarmas@school.edu.my"));
+        schools.add(new School(1, "SMK Air Tawar", "Jalan Persiaran Utama", "PPD Johor Bahru, Skudai", "81900", "07-1234567", "Kota Tinggi", "03-1234567", "airtawar@school.edu.my", "school_logo.jpg", "http://tvpss-airtawar.youtube.com"));
+        schools.add(new School(2, "SMK Banang Jaya", "Jalan Indah", "SDF Johor Bahru", "83000", "07-7654321", "Batu Pahat", "02-1234567", "banangjaya@school.edu.my", "school_logo2.jpg", "http://tvpss-banangjaya.youtube.com"));
+        schools.add(new School(3, "SMK Bandar Mas", "Jalan Cahaya", "TBV Johor Bahru", "81900", "07-5432123", "Kota Tinggi", "01-1234567", "bandarmas@school.edu.my", "school_logo3.jpg", "http://tvpss-bandarmas.youtube.com"));
     }
 
     @Override
@@ -52,4 +52,5 @@ public class SchoolInfo_admin extends HttpServlet {
         request.setAttribute("school", school);
         request.getRequestDispatcher("/view_school_info_admin.jsp").forward(request, response);
     }
+
 }

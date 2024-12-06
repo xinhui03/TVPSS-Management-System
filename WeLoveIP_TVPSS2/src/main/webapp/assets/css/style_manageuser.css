@@ -46,7 +46,7 @@ body {
 	width: calc(100% - 40px);
 	padding: 10px;
 	margin: 0 auto 15px;
-	background-color: #A7C5F3; /* Baby blue color */
+	background-color: #A7C5F3;
 	color: #404FA0;
 	border: none;
 	cursor: pointer;
@@ -55,14 +55,12 @@ body {
 	font-weight: bold;
 }
 
-/* Horizontal line under Logout button */
 hr {
 	border: 0;
 	border-top: 1px solid #ddd;
 	margin: 10px 0 15px;
 }
 
-/* Navigation Links */
 .sidebar .nav {
 	list-style: none;
 	padding: 0;
@@ -76,19 +74,19 @@ hr {
 	text-decoration: none;
 	display: block;
 	padding: 10px;
-	color: #333; /* Default text color */
-	background-color: #f8f9fa; /* No background change */
+	color: #333;
+	background-color: #f8f9fa;
 	border-radius: 5px;
 	font-size: 16px;
 }
 
 .sidebar .nav li a.active {
-	color: #00008B; /* Dark blue for active text */
+	color: #00008B;
 	font-weight: bold;
 }
 
 .sidebar .nav li a:hover {
-	text-decoration: none; /* No underline or background change */
+	text-decoration: none;
 }
 
 /* Dashboard Content */
@@ -107,7 +105,7 @@ hr {
 }
 
 .dashboard-content .header .logo {
-	width: 80px; /* Adjusted for proper size */
+	width: 80px;
 	height: auto;
 }
 
@@ -117,7 +115,115 @@ hr {
 	margin-bottom: 20px;
 }
 
-/* New user management section */
+/* Styling for the school info card */
+.school-card {
+    padding: 20px;
+    background-color: #9bc4e2;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.school-info-card {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add spacing for table rows */
+.school-info-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.school-info-card th, .school-info-card td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top; /* Ensures text is aligned to the top of the cell */
+}
+
+/* Adjust spacing between rows */
+.school-info-card tr {
+    margin-bottom: 45px; /* Space between rows */
+}
+
+/* Add subtle background color for alternate rows */
+.school-info-card tr:nth-child(odd) td {
+    background-color: #dcdcdc;
+}
+
+/* Styling for the school equip card */
+.school-equip {
+    padding: 20px;
+    background-color: #9bc4e2;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.school-equip-card {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.school-equip-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.school-equip-card th{
+    padding: 10px;
+    text-align: left;
+    vertical-align: top; /* Ensures text is aligned to the top of the cell */
+    background-color: #dcdcdc;
+}
+
+.school-equip-card td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top; /* Ensures text is aligned to the top of the cell */
+}
+
+/* Adjust spacing between rows */
+.school-equip-card tr {
+    margin-bottom: 45px; /* Space between rows */
+}
+
+/* Add subtle background color for alternate rows */
+.school-equip-card tr:nth-child(odd) td {
+    background-color: #a9a9a9;
+}
+
+/* Button styling for the back button */
+.back-btn {
+    padding: 10px 20px;
+    background-color: #2D3E9A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background-color: #182254;
+}
+
+/* Add spacing for the empty row */
+.spacer-row {
+    height: 15px; /* Adjust the height as needed */
+    background-color: transparent; /* Ensure it blends with the background */
+    border: none; /* Remove any borders */
+}
+
+/* User Table */
 .user-table {
 	width: 100%;
 	border-collapse: collapse;
@@ -127,11 +233,11 @@ hr {
 .user-table th, .user-table td {
 	padding: 12px;
 	text-align: left;
-	border: 1px solid #f0f0f0; /* Lighter border color */
+	border: 1px solid #f0f0f0;
 }
 
 .user-table th {
-	background-color: #ABB1D2; /* First row color */
+	background-color: #ABB1D2;
 	color: white;
 }
 
@@ -158,28 +264,27 @@ hr {
 	border: 1px solid #ddd;
 }
 
+/* Search Bar */
 .search-bar {
-	display: flex;
-	justify-content: flex-start; /* Align elements to the left */
-	margin-bottom: 20px;
-	align-items: center;
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Add spacing between input and button */
 }
 
 .search-bar input {
-	padding: 8px 12px;
-	width: 50%; /* Adjusted to be a bit smaller and closer to the button */
-	border-radius: 4px;
-	border: 1px solid #ddd;
-	margin-right: 10px; /* Space between input and button */
+    padding: 8px 12px;
+    width: 50%; /* Adjust width as needed */
+    border-radius: 4px;
+    border: 1px solid #ddd;
 }
 
 .search-bar button {
-	padding: 8px 12px;
-	background-color: #2D3E9A;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
+    padding: 8px 12px;
+    background-color: #2D3E9A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .search-bar button:hover {
@@ -188,28 +293,26 @@ hr {
 
 .add-user-btn {
 	padding: 8px 16px;
-	background-color: #2D3E9A; /* Blue background for Add User */
+	background-color: #2D3E9A;
 	color: white;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 	margin-left: 20px;
-	/* Adds spacing between the search button and Add User button */
 }
 
 .add-user-btn:hover {
-	background-color: #182254; /* Darker blue when hovered */
+	background-color: #182254;
 }
 
 .table-action-buttons {
 	display: flex;
-	gap: 10px; /* Adds space between the buttons */
+	gap: 10px;
 }
 
 .table-action-buttons button {
 	padding: 6px 12px;
 	background-color: #f0f0f0;
-	/* Light grey background for the action buttons */
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	cursor: pointer;
@@ -217,34 +320,61 @@ hr {
 }
 
 .table-action-buttons button:hover {
-	background-color: #ddd; /* Slightly darker on hover */
+	background-color: #ddd;
 }
 
 .table-action-buttons button.view {
-	background-color: #4169e1; /* Blue for Edit */
+	background-color: #4169e1;
 	color: white;
 }
 
 .table-action-buttons button.edit {
-	background-color: #4CAF50; /* Green for Edit */
+	background-color: #4CAF50;
 	color: white;
 }
 
 .table-action-buttons button.delete {
-	background-color: #f44336; /* Red for Delete */
+	background-color: #f44336;
+	color: white;
+}
+
+.table-action-buttons button.cancel {
+	background-color: #ccc;
+	color: white;
+}
+
+.table-action-buttons button.save {
+	background-color: #5072a7;
+	color: white;
+}
+
+.table-action-buttons button.add {
+	background-color: #5072a7;
 	color: white;
 }
 
 .table-action-buttons button.view:hover {
-	background-color: #00008b; /* Darker blue on hover */
+	background-color: #00008b;
 }
 
 .table-action-buttons button.edit:hover {
-	background-color: #367338; /* Darker green on hover */
+	background-color: #367338;
 }
 
 .table-action-buttons button.delete:hover {
-	background-color: #962b23; /* Darker red on hover */
+	background-color: #962b23;
+}
+
+.table-action-buttons button.cancel:hover {
+	background-color: #c0c0c0;
+}
+
+.table-action-buttons button.save:hover {
+	background-color: #1c39bb;
+}
+
+.table-action-buttons button.add:hover {
+	background-color: #1c39bb;
 }
 
 .status-work {
@@ -257,7 +387,6 @@ hr {
 	font-weight: bold;
 }
 
-/* CSS to position the Edit button at the top right */
 .edit-btn {
 	position: absolute;
 	top: 20px;
@@ -275,11 +404,10 @@ hr {
 	background-color: #45a049;
 }
 
-/* CSS to style the Save button */
 .save-btn {
 	position: absolute;
 	top: 20px;
-	right: 100px; /* Position it slightly to the left of the Edit button */
+	right: 100px;
 	padding: 10px 20px;
 	background-color: #4CAF50;
 	color: white;
@@ -291,4 +419,66 @@ hr {
 
 .save-btn:hover {
 	background-color: #45a049;
+}
+
+.form-container {
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 20px auto;
+	max-width: 600px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+	text-align: center;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input[type="text"], select {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.form-buttons {
+	text-align: center;
+}
+
+.cancel-btn, .save-btn {
+	margin: 5px;
+	padding: 10px 20px;
+}
+
+.cancel-btn {
+	background-color: #ccc;
+	color: #333;
+}
+
+.cancel-btn:hover, .save-btn:hover {
+	opacity: 0.9;
+}
+
+.add-model-btn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	padding: 10px 20px;
+	background-color: #2D3E9A;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.add-model-btn:hover {
+	background-color: #182254;
 }

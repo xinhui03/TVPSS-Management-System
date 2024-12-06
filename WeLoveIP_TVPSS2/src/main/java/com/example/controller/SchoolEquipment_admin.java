@@ -18,9 +18,9 @@ public class SchoolEquipment_admin extends HttpServlet {
     private static final List<School> schools = new ArrayList<>();
 
     static {
-        School school1 = new School(1, "SMK Air Tawar", "Kota Tinggi", "81900", "07-1234567", "airtawar@school.edu.my");
+        School school1 = new School(1, "SMK Air Tawar", "Jalan Persiaran Utama", "PPD Johor Bahru, Skudai", "81900", "07-1234567", "Kota Tinggi", "03-1234567", "airtawar@school.edu.my", "school_logo.jpg", "http://tvpss-airtawar.youtube.com");
         school1.addEquipment(new Equipment("Nikon D850 Camera", "Camera", "Work"));
-        school1.addEquipment(new Equipment("Model B", "Type 2", "Inactive"));
+        school1.addEquipment(new Equipment("Microphone Shure Sm58", "Microphone", "Inactive"));
 
         schools.add(school1);
     }
