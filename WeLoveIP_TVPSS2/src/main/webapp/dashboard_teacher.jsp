@@ -33,9 +33,9 @@ pageEncoding="UTF-8"%>
         <hr />
         <ul class="nav">
           <li><a href="dashboard_teacher.jsp" class="active">Dashboard</a></li>
-          <li><a href="#">School Information</a></li>
+          <li><a href="school_info_teacher.jsp">School Information</a></li>
           <li><a href="#">School Version</a></li>
-          <li><a href="#">Equipment Information</a></li>
+          <li><a href="school_equipment_teacher.jsp">Equipment Information</a></li>
           <li><a href="manage_user_teacher.jsp">Manage User Information</a></li>
           <li>
             <a href="crew_application/list.jsp">Crew Application</a>
