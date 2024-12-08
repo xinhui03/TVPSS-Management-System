@@ -65,7 +65,7 @@
                         <td>Johor</td>
                         <td>1</td>
                         <td><span class="status updated">Updated</span></td>
-                        <td><button class="view-btn" onclick ="window.location.href='verify.jsp'">View</button></td>
+                        <td><button class="view-btn" onclick ="window.location.href='verify_admin.jsp'">View</button></td>
                     </tr>
                     <tr>
                         <td>SM2002</td>

@@ -22,9 +22,9 @@
             <hr>
             <ul class="nav">
                 <li><a href="dashboard_admin.jsp" class="active">Dashboard</a></li>
-                <li><a href="#">School Information</a></li>
-                <li><a href="pageAdmin.jsp">School Version</a></li>
-                <li><a href="#">Equipment Information</a></li>
+                <li><a href="school_info_admin.jsp">School Information</a></li>
+                <li><a href="view_version_Admin.jsp">School Version</a></li>
+                <li><a href="school_equipment_admin.jsp">Equipment Information</a></li>
                 <li><a href="manage_user_admin.jsp">Manage User Information</a></li>
             </ul>
         </div>
