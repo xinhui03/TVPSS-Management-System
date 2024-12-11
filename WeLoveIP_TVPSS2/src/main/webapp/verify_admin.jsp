@@ -85,6 +85,11 @@
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox"></td>
             </tr>
+            <tr>
+                <td data-requirement="tech">Using "Green Screen" Technology</td>
+                <td><a href="#">🔗</a></td>
+                <td><input type="checkbox"></td>
+            </tr>
         </tbody>
     </table>
 
@@ -107,6 +112,8 @@
         }
     }
     
+    
+    
     function updateMessage() {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
         const requirements = {
@@ -121,14 +128,18 @@
         const message = document.getElementById('message');
 
         // Check specific requirements and update the message
-        if (requirements.logo && requirements.upload && requirements.recording) {
-            message.textContent = "Core requirements are fulfilled!";
+        if (requirements.logo && requirements.logo && requirements.studio) {
+            message.textContent = "Current school have reached Version 1!";
             message.style.color = "green";
+            
+            if (requirements.studio && requirements.recording) {
+                message.textContent = "Current school have reached Version 2";
+                message.style.color = "blue";
         } else if (requirements.studio && requirements.collaboration) {
-            message.textContent = "Studio setup and collaboration requirements are fulfilled!";
+            message.textContent = "Current school have reached Version 2";
             message.style.color = "blue";
-        } else if (requirements.outsideRecording) {
-            message.textContent = "Outdoor recording requirement is fulfilled!";
+        } else if (requirements.outsideRecording &&) {
+            message.textContent = "Current school have reached Version 3";
             message.style.color = "orange";
         } else {
             message.textContent = "Requirements are incomplete.";

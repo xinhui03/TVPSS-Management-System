@@ -100,6 +100,14 @@
 				                <span id="file-name-logo-6"></span>
 				            </td>
 				        </tr>
+				        <tr>
+				            <td>Using "Green Screen" Technology</td>
+				            <td>
+				                <label for="file-logo-6" class="attachment-icon">🔗</label>
+				                <input type="file" id="file-logo-6" class="file-input" onchange="handleFileUpload(event)">
+				                <span id="file-name-logo-6"></span>
+				            </td>
+				        </tr>
 				    </tbody>
 				</table>
 			
