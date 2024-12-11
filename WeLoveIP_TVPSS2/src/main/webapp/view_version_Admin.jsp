@@ -2,10 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Admin View School Version</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style_manageuser.css">
-    
-    </style>
 
 </head>
 <body>
@@ -57,7 +56,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="school_list">
                     <tr>
                         <td>SM1001</td>
                         <td>SMK Mutiara Rini</td>
@@ -87,12 +86,12 @@
 
             </div>
         </div>
-    </div>
+ 
 
     <script>
         function searchUser() {
             var input = document.getElementById("searchName").value.toLowerCase();
-            var rows = document.querySelectorAll("#userList tr");
+            var rows = document.querySelectorAll("#school_list tr");
 
             rows.forEach(function(row) {
                 var name = row.querySelector("td").textContent.toLowerCase();
