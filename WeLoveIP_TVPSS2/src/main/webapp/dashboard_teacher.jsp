@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
         <ul class="nav">
           <li><a href="dashboard_teacher.jsp" class="active">Dashboard</a></li>
           <li><a href="school_info_teacher.jsp">School Information</a></li>
-          <li><a href="view_version_teacher">School Version</a></li>
+          <li><a href="view_version_teacher.jsp">School Version</a></li>
           <li><a href="school_equipment_teacher.jsp">Equipment Information</a></li>
           <li><a href="manage_user_teacher.jsp">Manage User Information</a></li>
           <li>
