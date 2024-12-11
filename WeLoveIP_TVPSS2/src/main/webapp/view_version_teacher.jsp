@@ -83,7 +83,7 @@
 				                <input type="file" id="file-logo-4" class="file-input" onchange="handleFileUpload(event)">
 				                <span id="file-name-logo-4"></span>
 				            </td>
-				        </tr>`
+				        </tr>
 				        <tr>
 				            <td>Recording inside and outside the school</td>
 				            <td>
