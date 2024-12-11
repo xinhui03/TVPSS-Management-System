@@ -23,9 +23,9 @@
             <button class="logout-btn" onclick="window.location.href='login.jsp'">Log Out</button>
             <hr>
             <ul class="nav">
-                <li><a href="dashboard_admin.jsp" class="active">Dashboard</a></li>
+                <li><a href="dashboard_admin.jsp" >Dashboard</a></li>
                 <li><a href="#">School Information</a></li>
-                <li><a href="#">School Version</a></li>
+                <li><a href="view_version_Admin.jsp" class="active">School Version</a></li>
                 <li><a href="#">Equipment Information</a></li>
                 <li><a href="manage_user_admin.jsp">Manage User Information</a></li>
             </ul>
@@ -42,8 +42,7 @@
             <div class="search-bar">
                 <input type="text" id="searchName" placeholder="Search by name...">
                 <button onclick="searchUser()">Search</button>
-                <!-- Add User Button -->
-                <button class="add-user-btn" onclick="window.location.href='add_user_admin.jsp'">+ Add User</button>
+ 
             </div>
 
             <!-- User Table -->
@@ -86,13 +85,6 @@
                 </tbody>
             </table>
 
-            <div class="pagination">
-                <span>Showing data 1 to 8 of 100 entries</span>
-                <div class="pagination-controls">
-                    <button class="page-btn">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                </div>
             </div>
         </div>
     </div>

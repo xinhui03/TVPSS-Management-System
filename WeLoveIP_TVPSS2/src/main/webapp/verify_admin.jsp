@@ -21,9 +21,9 @@
             <button class="logout-btn" onclick="window.location.href='login.jsp'">Log Out</button>
             <hr>
             <ul class="nav">
-                <li><a href="dashboard_admin.jsp" class="active">Dashboard</a></li>
+                <li><a href="dashboard_admin.jsp" >Dashboard</a></li>
                 <li><a href="#">School Information</a></li>
-                <li><a href="view_version_Admin.jsp">School Version</a></li>
+                <li><a href="view_version_Admin.jsp" class="active">School Version</a></li>
                 <li><a href="#">Equipment Information</a></li>
                 <li><a href="manage_user_admin.jsp">Manage User Information</a></li>
             </ul>
@@ -35,7 +35,7 @@
                 <img src="assets/images/kpm_logo.png" alt="KPM Logo" class="logo">
                 <h2>TVPSS Management System</h2>
             </div>
-            <div class="container">
+ 
     <div class="container1">
     <!-- School Information -->
     <div class="school-info">
@@ -56,33 +56,32 @@
         </thead>
         <tbody>
             <tr>
-                <td>Logo</td>
-	            <td><a href="#">🔗</a></td>
-      
+                <td data-requirement="logo">Logo</td>
+                <td><a href="#">🔗</a></td>
                 <td><input type="checkbox" checked></td>
             </tr>
             <tr>
-                <td>Corner/Mini Studio/TV Studio</td>
+                <td data-requirement="studio">Corner/Mini Studio/TV Studio</td>
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox"></td>
             </tr>
             <tr>
-                <td>In-School Recording</td>
+                <td data-requirement="recording">In-School Recording</td>
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox" checked></td>
             </tr>
             <tr>
-                <td>Upload on Youtube</td>
+                <td data-requirement="upload">Upload on Youtube</td>
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox" checked></td>
             </tr>
             <tr>
-                <td>Recording inside and outside the school</td>
+                <td data-requirement="outside-recording">Recording inside and outside the school</td>
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox"></td>
             </tr>
             <tr>
-                <td>Collaborate with external agencies</td>
+                <td data-requirement="collaboration">Collaborate with external agencies</td>
                 <td><a href="#">🔗</a></td>
                 <td><input type="checkbox"></td>
             </tr>
@@ -98,9 +97,6 @@
 
             </div>
         </div>
-    </div>
-</body>
-</html>
 
 <script>
     function confirmUpdate() {
@@ -110,6 +106,49 @@
             window.location.href = "view_version_Admin.jsp"; 
         }
     }
+    
+    function updateMessage() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const requirements = {
+            logo: document.querySelector('td[data-requirement="logo"] ~ td input').checked,
+            studio: document.querySelector('td[data-requirement="studio"] ~ td input').checked,
+            recording: document.querySelector('td[data-requirement="recording"] ~ td input').checked,
+            upload: document.querySelector('td[data-requirement="upload"] ~ td input').checked,
+            outsideRecording: document.querySelector('td[data-requirement="outside-recording"] ~ td input').checked,
+            collaboration: document.querySelector('td[data-requirement="collaboration"] ~ td input').checked,
+        };
+
+        const message = document.getElementById('message');
+
+        // Check specific requirements and update the message
+        if (requirements.logo && requirements.upload && requirements.recording) {
+            message.textContent = "Core requirements are fulfilled!";
+            message.style.color = "green";
+        } else if (requirements.studio && requirements.collaboration) {
+            message.textContent = "Studio setup and collaboration requirements are fulfilled!";
+            message.style.color = "blue";
+        } else if (requirements.outsideRecording) {
+            message.textContent = "Outdoor recording requirement is fulfilled!";
+            message.style.color = "orange";
+        } else {
+            message.textContent = "Requirements are incomplete.";
+            message.style.color = "red";
+        }
+    }
+
+    // Initial call to update the message
+    updateMessage();
+
+    // Add event listeners to all checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateMessage);
+    });
+    
 </script>
+
+</body>
+</html>
+
 
 
