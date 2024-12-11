@@ -114,47 +114,6 @@
     
     
     
-    function updateMessage() {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        const requirements = {
-            logo: document.querySelector('td[data-requirement="logo"] ~ td input').checked,
-            studio: document.querySelector('td[data-requirement="studio"] ~ td input').checked,
-            recording: document.querySelector('td[data-requirement="recording"] ~ td input').checked,
-            upload: document.querySelector('td[data-requirement="upload"] ~ td input').checked,
-            outsideRecording: document.querySelector('td[data-requirement="outside-recording"] ~ td input').checked,
-            collaboration: document.querySelector('td[data-requirement="collaboration"] ~ td input').checked,
-        };
-
-        const message = document.getElementById('message');
-
-        // Check specific requirements and update the message
-        if (requirements.logo && requirements.logo && requirements.studio) {
-            message.textContent = "Current school have reached Version 1!";
-            message.style.color = "green";
-            
-            if (requirements.studio && requirements.recording) {
-                message.textContent = "Current school have reached Version 2";
-                message.style.color = "blue";
-        } else if (requirements.studio && requirements.collaboration) {
-            message.textContent = "Current school have reached Version 2";
-            message.style.color = "blue";
-        } else if (requirements.outsideRecording &&) {
-            message.textContent = "Current school have reached Version 3";
-            message.style.color = "orange";
-        } else {
-            message.textContent = "Requirements are incomplete.";
-            message.style.color = "red";
-        }
-    }
-
-    // Initial call to update the message
-    updateMessage();
-
-    // Add event listeners to all checkboxes
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateMessage);
-    });
     
 </script>
 
