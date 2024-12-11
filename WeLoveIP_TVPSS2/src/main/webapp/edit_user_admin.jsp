@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Add User</title>
+    <title>Admin Edit User</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style_adduser.css">
    
 </head>
@@ -21,7 +21,7 @@
             <button class="logout-btn" onclick="window.location.href='login.jsp'">Log Out</button>
             <hr>
             <ul class="nav">
-                <li><a href="dashboard_admin.jsp">Dashboard</a></li>
+                <li><a href="dashboard_admin.jsp" >Dashboard</a></li>
                 <li><a href="#">School Information</a></li>
                 <li><a href="#">School Version</a></li>
                 <li><a href="#">Equipment Information</a></li>
@@ -36,37 +36,38 @@
                 <h2>TVPSS Management System</h2>
             </div>
 			
-            <h4 class="page-title">Manage User Information > Add User</h4>
+            <h4 class="page-title">Manage User Information > Edit User Information</h4>
 
 				<form action="/WeLoveIP_TVPSS/manage_user_admin.jsp" method="post" onsubmit="return confirmSubmit()">
                 <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Insert teacher's full name" required>
-                </div>
+				    <label for="fullName">Full Name</label>
+				    <input type="text" id="fullName" name="fullName" value="Hairul Bin Hadi" placeholder="Insert teacher's full name" required>
+				</div>
+
 
                 <div class="form-group">
                     <label for="schoolName">School Name</label>
-                    <input type="text" id="schoolName" name="schoolName" placeholder="Insert teacher's school name" required>
+                    <input type="text" id="schoolName" name="schoolName" value="SMK Mutiara Rini" placeholder="Insert teacher's school name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="contactNumber">Contact Number</label>
-                    <input type="text" id="contactNumber" name="contactNumber" placeholder="Insert teacher's contact number" required>
+                    <input type="text" id="contactNumber" name="contactNumber" value="0199999999" placeholder="Insert teacher's contact number" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Insert teacher's email" required>
+                    <input type="email" id="email" name="email" value="hairul@moe.gov.my" placeholder="Insert teacher's email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="state">State</label>
-                    <input type="text" id="state" name="state" placeholder="Insert teacher's state" required>
+                    <input type="text" id="state" name="state" value="Johor" placeholder="Insert teacher's state" required>
                 </div>
 
                 <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" id="city" name="city" placeholder="Insert teacher's city" required>
+                    <input type="text" id="city" name="city" value="Skudai" placeholder="Insert teacher's city" required>
                 </div>
 
                 <div class="form-buttons">
@@ -75,12 +76,13 @@
                 </div>
             </form>
             <script>
+            
     function confirmSubmit() {
         // Confirmation popup before submitting the form
-        var confirmation = confirm("Are you sure to add this user information?");
+        var confirmation = confirm("Are you sure to update this user information?");
         if (result) {
         	 // This alert can be removed if not needed
-            alert("This information has been successfully submitted!");
+            alert("This information has been successfully updated!");
             
             // After successful submission, redirect to manage_user_admin.jsp
             return true;  // Proceed with form submission
@@ -89,6 +91,9 @@
             return false;  // Cancel form submission
         }
     }
+    
+
+</script>
 </script>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin Manage User Information</title>
+    <title>Teacher Manage User Information</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style_manageuser.css">
 </head>
 <body>
@@ -9,23 +9,24 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="profile">
-                <img src="assets/images/icon_admin.png" alt="Profile Picture" class="profile-pic">
+                <img src="assets/images/icon_teacher.png" alt="Profile Picture" class="profile-pic">
                 <div class="profile-info">
-                    <h3>Admin</h3>
-                    <p>ali@admintvpss.com</p> <!-- Fetching email dynamically -->
+                    <h3>Teacher</h3>
+                    <p>hairulsmkmr@gov.my</p> <!-- Fetching email dynamically -->
                 </div>
             </div>
             
             <button class="logout-btn" onclick="window.location.href='login.jsp'">Log Out</button>
             <hr>
-            <ul class="nav">
-    <li><a href="dashboard_admin.jsp" class="<%= request.getRequestURI().endsWith("dashboard_admin.jsp") ? "active" : "" %>">Dashboard</a></li>
-    <li><a href="#" class="<%= request.getRequestURI().endsWith("school_info_admin.jsp") ? "active" : "" %>">School Information</a></li>
-    <li><a href="#" class="<%= request.getRequestURI().endsWith("school_version_admin.jsp") ? "active" : "" %>">School Version</a></li>
-    <li><a href="#" class="<%= request.getRequestURI().endsWith("equipment_info_admin.jsp") ? "active" : "" %>">Equipment Information</a></li>
-    <li><a href="manage_user_admin.jsp" class="<%= request.getRequestURI().endsWith("manage_user_admin.jsp") ? "active" : "" %>">Manage User Information</a></li>
-</ul>
 
+            
+            <ul class="nav">
+    <li><a href="dashboard_teacher.jsp" class="<%= request.getRequestURI().endsWith("dashboard_teacher.jsp") ? "active" : "" %>">Dashboard</a></li>
+    <li><a href="#" class="<%= request.getRequestURI().endsWith("school_info_teacher.jsp") ? "active" : "" %>">School Information</a></li>
+    <li><a href="#" class="<%= request.getRequestURI().endsWith("school_version_teacher.jsp") ? "active" : "" %>">School Version</a></li>
+    <li><a href="#" class="<%= request.getRequestURI().endsWith("equipment_info_teacher.jsp") ? "active" : "" %>">Equipment Information</a></li>
+    <li><a href="manage_user_teacher.jsp" class="<%= request.getRequestURI().endsWith("manage_user_teacher.jsp") ? "active" : "" %>">Manage User Information</a></li>
+</ul>
         </div>
 
         <!-- Main Content -->
@@ -40,7 +41,7 @@
                 <input type="text" id="searchName" placeholder="Search by name...">
                 <button onclick="searchUser()">Search</button>
                 <!-- Add User Button -->
-                <button class="add-user-btn" onclick="window.location.href='add_user_admin.jsp'">+ Add User</button>
+                <button class="add-user-btn" onclick="window.location.href='add_user_teacher.jsp'">+ Add User</button>
             </div>
 
             <!-- User Table -->
@@ -49,92 +50,24 @@
                     <tr>
                         <th>Full Name</th>
                         <th>Email</th>
-                        <th>State</th>
                         <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id="userList">
                     <tr>
-                        <td>Hairul Bin Hadi</td>
-                        <td>hairul@moe.gov.my</td>
-                        <td>Johor</td>
-                        <td>Teacher</td>
+                        <td>Zarif Bin Hakim</td>
+                        <td>zarif@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
                                     <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="1">
-                                    <button class="delete" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Farah Binti Zaki</td>
-                        <td>farah@moe.gov.my</td>
-                        <td>Melaka</td>
-                        <td>Teacher</td>
-                        <td>
-                            <div class="table-action-buttons">
-                                <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="edit" type="submit">Edit</button>
-                                </form>
-                                <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="delete" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-
-					<tr>
-                        <td>Syaza Binti Zaki</td>
-                        <td>syaza@moe.gov.my</td>
-                        <td>Perlis</td>
-                        <td>Teacher</td>
-                        <td>
-                            <div class="table-action-buttons">
-                                <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="edit" type="submit">Edit</button>
-                                </form>
-                                <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="delete" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-
-					<tr>
-                        <td>Lee Qing Yue</td>
-                        <td>leeqy@moe.gov.my</td>
-                        <td>Negeri Sembilan</td>
-                        <td>Teacher</td>
-                        <td>
-                            <div class="table-action-buttons">
-                                <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;" id="editFormZarif">
-                                    <input type="hidden" name="id" value="1">
-                                    <button class="edit" type="submit">Edit</button>
-                                </form>
-                                <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
@@ -144,43 +77,62 @@
                     </tr>
 
                     <tr>
-                        <td>Shami Bin Syazam</td>
-                        <td>shami@moe.gov.my</td>
-                        <td>Pulau Penang</td>
-                        <td>Teacher</td>
+                        <td>Saleh Bin Ahmad</td>
+                        <td>saleh@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
 
-					<tr>
-                        <td>Rozaidi Bin Ali</td>
-                        <td>rozaidi@moe.gov.my</td>
-                        <td>Selangor</td>
-                        <td>Teacher</td>
+                    <tr>
+                        <td>Ahmed Bin Ahmad</td>
+                        <td>ahmed@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
+                                    <input type="hidden" name="id" value="1">
+                                    <button class="delete" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>See Hui Xin</td>
+                        <td>seehx@moe-dl.edu.my</td>
+                        <td>Student</td>
+                        <td>
+                            <div class="table-action-buttons">
+                                <!-- Edit Form -->
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
+                                    <button class="edit" type="submit">Edit</button>
+                                </form>
+                                <!-- Delete Form -->
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
                                 </form>
                             </div>
@@ -188,19 +140,18 @@
                     </tr>
                     
                     <tr>
-                        <td>Fatin Binti Hakim</td>
-                        <td>fatin@moe.gov.my</td>
-                        <td>Johor</td>
-                        <td>Teacher</td>
+                        <td>Rashid Bin Rahmi</td>
+                        <td>rashid@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
                                     <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
@@ -210,63 +161,82 @@
                     </tr>
 
                     <tr>
-                        <td>Tan Chang Xi</td>
-                        <td>tancx@moe.gov.my</td>
-                        <td>Kedah</td>
-                        <td>Teacher</td>
+                        <td>Dina Binti Abu</td>
+                        <td>dina@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
+                                    <input type="hidden" name="id" value="1">
+                                    <button class="delete" type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+  
+                    <tr>
+                        <td>Chang Yun Ling</td>
+                        <td>changyl@moe-dl.edu.my</td>
+                        <td>Student</td>
+                        <td>
+                            <div class="table-action-buttons">
+                                <!-- Edit Form -->
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
+                                    <button class="edit" type="submit">Edit</button>
+                                </form>
+                                <!-- Delete Form -->
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
 
-					<tr>
-                        <td>Zarah Binti Hamad</td>
-                        <td>zarah@moe.gov.my</td>
-                        <td>Melaka</td>
-                        <td>Teacher</td>
+                    <tr>
+                        <td>Aisyah Binti Aimi</td>
+                        <td>aisyah@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
                     
+ 
                     <tr>
-                        <td>Koh Yi Xiang</td>
-                        <td>kohyx@moe.gov.my</td>
-                        <td>Sabah</td>
-                        <td>Teacher</td>
+                        <td>Zairul Bin Hadi</td>
+                        <td>zairul@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
                                     <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
@@ -276,48 +246,26 @@
                     </tr>
 
                     <tr>
-                        <td>Noraina Binti Zaki</td>
-                        <td>noraina@moe.gov.my</td>
-                        <td>Selangor</td>
-                        <td>Teacher</td>
+                        <td>Khairul Bin Zadim</td>
+                        <td>khairul@moe-dl.edu.my</td>
+                        <td>Student</td>
                         <td>
                             <div class="table-action-buttons">
                                 <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
+                                <form action="edit_user_teacher.jsp" method="get" style="display: inline;" id="editFormZarif">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="edit" type="submit">Edit</button>
                                 </form>
                                 <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
+                                <form action="ManageUser_teacher" method="post" style="display: inline;" onsubmit="return confirmDelete()">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
+                                    <input type="hidden" name="id" value="1">
                                     <button class="delete" type="submit">Delete</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
-
-					<tr>
-                        <td>Toh Yue Moi</td>
-                        <td>tohym@moe.gov.my</td>
-                        <td>Melaka</td>
-                        <td>Teacher</td>
-                        <td>
-                            <div class="table-action-buttons">
-                                <!-- Edit Form -->
-                                <form action="edit_user_admin.jsp" method="get" style="display: inline;">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="edit" type="submit">Edit</button>
-                                </form>
-                                <!-- Delete Form -->
-                                <form action="ManageUser_admin" method="post" style="display: inline;" onsubmit="return confirmDelete()">
-                                    <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="id" value="2">
-                                    <button class="delete" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
+                    
 
                 </tbody>
             </table>
