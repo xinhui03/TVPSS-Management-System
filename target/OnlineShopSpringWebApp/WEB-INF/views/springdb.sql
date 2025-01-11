@@ -40,11 +40,11 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `address`, `contactNum`, `email`) VALUES
-(1, 'Lau', 'M19,KTDI', '0123456789', 'lau@gmail.com'),
-(2, 'Cheng', 'M19,KTDI', '0123478562', 'cheng@gmail.com'),
-(3, 'Teoh', 'M19,KTDI', '0123478562', 'teoh@gmail.com'),
-(4, 'Jolyn', 'M20,KTDI', '0125266789', 'jolyn@gmail.com'),
-(5, 'yee', 'M20.KTDI', '012548554', 'yee@gmail.com');
+(1, 'Sue', 'M19,KTDI', '0123456789', 'sue@gmail.com'),
+(2, 'May', 'M19,KTDI', '0123478562', 'may@gmail.com'),
+(3, 'Ahmad', 'M16,KTDI', '0123478562', 'ahmad@gmail.com'),
+(4, 'Sukaidah', 'M20,KTDI', '0125266789', 'su@gmail.com'),
+(5, 'Mary', 'M21,KTDI', '012548554', 'mary@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `name`, `price`, `quantity`) VALUES
 (1, 'cake', 10.00, 10),
-(2, 'cheese bread', 5.00, 10),
-(3, 'white bread', 2.00, 10);
+(2, 'bread', 5.00, 10),
+(3, 'donut', 2.00, 10);
 
 --
 -- Indexes for dumped tables

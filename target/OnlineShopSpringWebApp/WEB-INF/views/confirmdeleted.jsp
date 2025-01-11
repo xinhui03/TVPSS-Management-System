@@ -6,7 +6,7 @@
     <title>Customer Deleted</title>
 </head>
 <body>
-    <h2>Customer Deleted Successfully</h2>
+    <h2>Customer Deleted Successfully!</h2>
     <p>Customer with ID ${id} has been deleted.</p>
 </body>
 </html>

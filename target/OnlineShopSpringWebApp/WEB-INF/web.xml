@@ -12,6 +12,9 @@
 	
 	<!-- add the securityfilter in web.xml here -->
 	<!-- Spring Security Filter -->
+	<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
