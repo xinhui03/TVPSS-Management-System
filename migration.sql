@@ -6,7 +6,6 @@ CREATE TABLE student (
     address VARCHAR(255) NOT NULL,
     contact VARCHAR(255) NOT NULL,
     parentcontact VARCHAR(255) NOT NULL,
-    studentid VARCHAR(255) NOT NULL,
     grade VARCHAR(255) NOT NULL
 );
 
@@ -14,7 +13,6 @@ CREATE TABLE student (
 CREATE TABLE crew_application (
     id INT AUTO_INCREMENT PRIMARY KEY,
     student_name VARCHAR(255) NOT NULL,
-    student_id INT NOT NULL,
     ic_number VARCHAR(255) NOT NULL,
     gender VARCHAR(50) NOT NULL,
     matric_number VARCHAR(255) NOT NULL,
@@ -23,8 +21,8 @@ CREATE TABLE crew_application (
     email VARCHAR(255) NOT NULL,
     youtube_link VARCHAR(255),
     application_reason TEXT NOT NULL,
-    isApproved BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (student_id) REFERENCES student(id) ON DELETE CASCADE
+    is_approved BOOLEAN DEFAULT FALSE,
+    is_rejected BOOLEAN DEFAULT FALSE
 );
 
 CREATE TABLE teacher (

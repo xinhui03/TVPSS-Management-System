@@ -8,8 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @Controller
@@ -19,25 +20,49 @@ public class StudentController {
     @Autowired
     private CrewApplicationDAO_usingHibernate applicationDAO;
 
+    @RequestMapping("/dashboard")
+    public String showDashboard() {
+        return "dashboard_student"; // This will forward to dashboard_admin.jsp
+    }
+  
+
     // Crew application
     // Method to show the application form
     @GetMapping("/crew/apply")
     public String showApplicationForm() {
-        return "apply_crew"; 
+        return "students/apply_crew"; 
     }
 
-    // Method to submit an application
     @PostMapping("/crew/submit")
-    public String submitApplication(@ModelAttribute("application") CrewApplication application) {
-        applicationDAO.save(application);
-        return "redirect:/student/crew/viewApplications"; // Redirect to view applications after submission
+    public String submitApplication(@ModelAttribute("application") CrewApplication application, Model model) {
+        try {
+            System.out.println("Attempting to save application: " + application.getStudentName());
+            applicationDAO.save(application);
+            return "redirect:/student/crew/viewApplications";
+        } catch (Exception e) {
+            e.printStackTrace(); // Add stack trace
+            model.addAttribute("errorMessage", "Error saving application: " + e.getMessage());
+            return "students/apply_crew";
+        }
     }
 
-    // Method to view a specific application by ID
+    @GetMapping("/crew/viewAllApplications")
+    public String viewAllApplications(Model model) {
+        List<CrewApplication> applications = applicationDAO.findAll();
+        model.addAttribute("applications", applications);
+        return "students/view_all_applications"; // New JSP page to list all applications
+    }
+
     @GetMapping("/crew/viewApplication")
-    public String viewApplication(@ModelAttribute("id") int id, Model model) {
+    public String viewApplication(@RequestParam("id") int id, Model model) {
+        System.out.println("Fetching application with ID: " + id); // Added logging
         CrewApplication application = applicationDAO.findById(id);
-        model.addAttribute("application", application);
-        return "view_application"; // JSP page to display application details
+        if (application != null) {
+            model.addAttribute("application", application);
+            return "students/view_application"; // JSP page to display application details
+        } else {
+            model.addAttribute("errorMessage", "Application not found.");
+            return "students/view_application"; // Redirect to the list if not found
+        }
     }
 } 

@@ -18,7 +18,7 @@ public class CrewApplicationDAO_usingHibernate {
     @Transactional
     public void save(CrewApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.save(application);
+        currentSession.saveOrUpdate(application);
     }
 
     @Transactional
@@ -38,7 +38,17 @@ public class CrewApplicationDAO_usingHibernate {
         Session currentSession = sessionFactory.getCurrentSession();
         CrewApplication application = currentSession.get(CrewApplication.class, id);
         if (application != null) {
-            application.setApproved(true);; // Assuming you have an approved field
+            application.setApproved(true); // Assuming you have an approved field
+            currentSession.update(application);
+        }
+    }
+
+    @Transactional
+    public void reject(int id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        CrewApplication application = currentSession.get(CrewApplication.class, id);
+        if (application != null) {
+            application.setRejected(true);
             currentSession.update(application);
         }
     }

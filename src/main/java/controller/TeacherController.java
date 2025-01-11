@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import entity.CrewApplication;
 import entity.Teacher;
 import entity.Student;
@@ -89,36 +89,51 @@ public class TeacherController {
 	////////////////////////////////////////////////
 	//crew application//////////////////////////////
 	////////////////////////////////////////////////
-	  @RequestMapping("/manageApplications")
-    public String manageApplications(Model model) {
-        List<CrewApplication> applications = applicationDAO.findAll();
-        model.addAttribute("applications", applications);
-        return "manage_applications"; // JSP page to display applications
-    }
+	@GetMapping("/crew/manageApplications")
+	public String manageApplications(
+					@RequestParam(defaultValue = "1") int page,
+					@RequestParam(defaultValue = "10") int size,
+					Model model) {
+			List<CrewApplication> applications = applicationDAO.findAll();
+			
+			// Calculate pagination
+			int totalItems = applications.size();
+			int totalPages = (int) Math.ceil((double) totalItems / size);
+			int startItem = (page - 1) * size;
+			int endItem = Math.min(startItem + size, totalItems);
+			
+			List<CrewApplication> paginatedApplications = applications.subList(startItem, endItem);
+			
+			model.addAttribute("applications", paginatedApplications);
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			
+			return "teachers/manage_applications";
+	}
 
-	@GetMapping("/viewApplication")
-	public String viewApplication(@ModelAttribute("id") int id, Model model) {
+	@PostMapping("/crew/approveApplication")
+	public String approveApplication(@RequestParam("id") int id) {
+			applicationDAO.approve(id);
+			return "redirect:/teacher/crew/manageApplications";
+	}
+
+	@PostMapping("/crew/rejectApplication")
+	public String rejectApplication(@RequestParam("id") int id) {
+			applicationDAO.reject(id);
+			return "redirect:/teacher/crew/manageApplications";
+	}
+		
+	@GetMapping("/crew/viewApplication")
+	public String viewApplication(@RequestParam("id") int id, Model model) {
 		CrewApplication application = applicationDAO.findById(id);
 		model.addAttribute("application", application);
-		return "view_application"; // JSP page to display application details
+		return "teachers/view_application"; // JSP page to display application details
 	}
 
-	@PostMapping("/approveApplication")
-	public String approveApplication(@ModelAttribute("id") int id) {
-		// Logic to approve the application (e.g., update status)
-		applicationDAO.approve(id); // Assuming you have an approve method in your DAO
-		return "redirect:/teacher/manageApplications"; // Redirect back to the applications page
-	}
-
-	@PostMapping("/deleteApplication")
+	@PostMapping("/crew/deleteApplication")
 	public String deleteApplication(@ModelAttribute("id") int id) {
 		applicationDAO.delete(id);
 		return "redirect:/teacher/manageApplications"; // Redirect back to the applications page
 	}
 
-
-	
-
-
-	
 }
