@@ -66,7 +66,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 		protected void registerAuthentication(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
 	        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-	        authManagerBuilder
+	        auth
 	            .inMemoryAuthentication()
 	                .withUser("admin")
                     .password(encoder.encode("admin"))
