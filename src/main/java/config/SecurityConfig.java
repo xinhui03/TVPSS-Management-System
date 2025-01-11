@@ -63,7 +63,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
             http.csrf().disable();
 		}
 		
-		protected void registerAuthentication(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
+		protected void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 	        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 	        auth
