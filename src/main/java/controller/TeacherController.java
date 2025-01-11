@@ -13,17 +13,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import entity.Customer;
+import entity.CrewApplication;
 import entity.Teacher;
 import entity.Student;
 import service.TeacherDAO_usingHibernate;
 import service.StudentDAO_usingHibernate;
+import service.CrewApplicationDAO_usingHibernate;
 
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
 	@Autowired //spring dependency injection
 	private StudentDAO_usingHibernate cDao_usingHibernate;
+
+	@Autowired
+	private CrewApplicationDAO_usingHibernate applicationDAO;
 	
 	@RequestMapping("/dashboard")
 	public String showDashboard() {
@@ -82,8 +86,35 @@ public class TeacherController {
 		model.addAttribute("id", id);
 		return "redirect:/teacher/manageuser";
 	}
+	////////////////////////////////////////////////
+	//crew application//////////////////////////////
+	////////////////////////////////////////////////
+	  @RequestMapping("/manageApplications")
+    public String manageApplications(Model model) {
+        List<CrewApplication> applications = applicationDAO.findAll();
+        model.addAttribute("applications", applications);
+        return "manage_applications"; // JSP page to display applications
+    }
 
+	@GetMapping("/viewApplication")
+	public String viewApplication(@ModelAttribute("id") int id, Model model) {
+		CrewApplication application = applicationDAO.findById(id);
+		model.addAttribute("application", application);
+		return "view_application"; // JSP page to display application details
+	}
 
+	@PostMapping("/approveApplication")
+	public String approveApplication(@ModelAttribute("id") int id) {
+		// Logic to approve the application (e.g., update status)
+		applicationDAO.approve(id); // Assuming you have an approve method in your DAO
+		return "redirect:/teacher/manageApplications"; // Redirect back to the applications page
+	}
+
+	@PostMapping("/deleteApplication")
+	public String deleteApplication(@ModelAttribute("id") int id) {
+		applicationDAO.delete(id);
+		return "redirect:/teacher/manageApplications"; // Redirect back to the applications page
+	}
 
 
 	
