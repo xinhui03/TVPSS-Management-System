@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import entity.Customer;
 import entity.Teacher;
 import service.TeacherDAO_usingHibernate;
 
