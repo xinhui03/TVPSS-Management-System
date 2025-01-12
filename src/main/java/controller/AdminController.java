@@ -103,7 +103,7 @@ public class AdminController {
 		return "redirect:/admin/manageuser";
 	}
 	
-	@GetMapping("/schools")
+	@RequestMapping("/schools")
 	public String getSchoolList(Model model) {
 	    List<School> schoolList = teacherDAO.getDistinctSchools();
 	    model.addAttribute("schoolList", schoolList);
