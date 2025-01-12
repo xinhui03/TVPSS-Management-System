@@ -135,5 +135,9 @@ public class TeacherController {
 		applicationDAO.delete(id);
 		return "redirect:/teacher/crew/manageApplications"; 
 	}
-
+	
+	@GetMapping("/version")
+	public String teacherVersion() {
+		return "teachers/view_application";
+	}
 }
