@@ -25,6 +25,16 @@ CREATE TABLE crew_application (
     is_rejected BOOLEAN DEFAULT FALSE
 );
 
+INSERT INTO crew_application (
+    student_name, ic_number, gender, matric_number, school, phone_no, email, youtube_link, application_reason, is_approved, is_rejected
+) VALUES
+('Ali Bin Ahmad', '910202-08-5678', 'Male', 'A20EC1234', 'School of Computing', '0123456789', 'ali.ahmad@example.com', 'https://youtube.com/shorts/xyz1', 'I am passionate about contributing to the team and learning new skills.', TRUE, FALSE),
+('Fatimah Binti Hassan', '990505-10-1234', 'Female', 'A20EC5678', 'School of Business', '0198765432', 'fatimah.hassan@example.com', NULL, 'I want to gain experience in event management and teamwork.', FALSE, TRUE),
+('John Doe', '880303-07-9876', 'Male', 'A20EC3456', 'School of Engineering', '0187654321', 'john.doe@example.com', 'https://youtube.com/shorts/abc2', 'I have previous experience in organizing events and want to utilize my skills.', FALSE, FALSE),
+('Nurul Ain', '000707-05-4321', 'Female', 'A20EC7890', 'School of Architecture', '0134567890', 'nurul.ain@example.com', NULL, 'I am enthusiastic about being part of a creative team.', TRUE, FALSE),
+('Ahmad Zamri', '920101-09-1122', 'Male', 'A20EC1011', 'School of Multimedia', '0145678901', 'ahmad.zamri@example.com', 'https://youtube.com/shorts/def3', 'I believe this opportunity will help me grow personally and professionally.', FALSE, FALSE);
+
+
 CREATE TABLE teacher (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fullName VARCHAR(255) NOT NULL,

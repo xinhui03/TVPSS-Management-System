@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <jsp:include page="../components/sidebar.jsp" />
+        <jsp:include page="../components/sidebar_teacher.jsp" />
 
         <!-- Main Content -->
         <div class="dashboard-content">
@@ -54,17 +54,26 @@
                                 </td>
                                 <td>${application.applicationReason}</td>
                                 <td class="actions">
-                                  <button onclick="viewDetails('${application.id}')" class="view-btn">View</button>
+                                    <form action="${pageContext.request.contextPath}/teacher/crew/viewApplication" method="get" style="display: inline;">
+                                        <input type="hidden" name="id" value="${application.id}">
+                                        <button type="submit" class="view-btn">View</button>
+                                    </form>
                                   <form action="${pageContext.request.contextPath}/teacher/crew/approveApplication" method="post" style="display: inline;">
                                       <input type="hidden" name="id" value="${application.id}">
-                                      <button type="submit" class="approve-btn" ${application.isApproved || application.isRejected ? 'disabled' : ''}>
+                                      <button type="submit" class="approve-btn" ${application.isApproved ? 'disabled' : ''}>
                                           Approve
                                       </button>
                                   </form>
                                   <form action="${pageContext.request.contextPath}/teacher/crew/rejectApplication" method="post" style="display: inline;">
                                       <input type="hidden" name="id" value="${application.id}">
-                                      <button type="submit" class="reject-btn" ${application.isApproved || application.isRejected ? 'disabled' : ''}>
+                                      <button type="submit" class="reject-btn" ${application.isRejected ? 'disabled' : ''}>
                                           Reject
+                                      </button>
+                                  </form>
+                                  <form action="${pageContext.request.contextPath}/teacher/crew/deleteApplication" method="post" style="display: inline;">
+                                      <input type="hidden" name="id" value="${application.id}">
+                                      <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this application?');">
+                                          Delete
                                       </button>
                                   </form>
                               </td>
@@ -84,7 +93,7 @@
     </div>
 
     <script>
-     function applyFilters() {
+function applyFilters() {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const statusFilter = document.getElementById('statusFilter').value;
     const rows = document.querySelectorAll('#applicationsList tr');
@@ -92,10 +101,11 @@
     rows.forEach(row => {
         const name = row.cells[0].textContent.toLowerCase();
         const statusElement = row.querySelector('.status-badge');
-        const status = statusElement.textContent.toLowerCase();
+        const status = statusElement.classList.contains('approved') ? 'approved' :
+                       statusElement.classList.contains('rejected') ? 'rejected' : 'pending';
         
         const matchesSearch = name.includes(searchTerm);
-        const matchesStatus = statusFilter === 'all' || status === statusFilter.toLowerCase();
+        const matchesStatus = statusFilter === 'all' || status === statusFilter;
         
         row.style.display = matchesSearch && matchesStatus ? '' : 'none';
     });

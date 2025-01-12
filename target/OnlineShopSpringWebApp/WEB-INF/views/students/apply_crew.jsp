@@ -17,7 +17,8 @@ isELIgnored="false" %>
   <body>
     <div class="container">
       <!-- Sidebar -->
-      <jsp:include page="../components/sidebar.jsp" />
+      <jsp:include page="../components/sidebar_student.jsp"/>
+
 
       <!-- Main Content -->
       <div class="dashboard-content">

@@ -20,17 +20,16 @@
 .status-approved {
   color: #28a745; /* Green for approved status */
   font-weight: bold;
-  padding: 5px 10px; /* Padding for better button-like appearance */
-  border-radius: 5px; /* Rounded corners */
-  background-color: rgba(40, 167, 69, 0.1); /* Light green background */
 }
 
 .status-pending {
   color: #ffc107; /* Yellow for pending status */
   font-weight: bold;
-  padding: 5px 10px; /* Padding for better button-like appearance */
-  border-radius: 5px; /* Rounded corners */
-  background-color: rgba(255, 193, 7, 0.1); /* Light yellow background */
+}
+
+.status-rejected {
+  color: #dc3545; /* Red for rejected status */
+  font-weight: bold;
 }
 
 .form-buttons {

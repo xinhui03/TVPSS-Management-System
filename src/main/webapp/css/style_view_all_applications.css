@@ -7,7 +7,7 @@
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .application-card h3 {
@@ -16,12 +16,17 @@
 }
 
 .status-approved {
-  color: #28a745;
+  color: #28a745; /* Green for approved status */
   font-weight: bold;
 }
 
 .status-pending {
-  color: #ffc107;
+  color: #ffc107; /* Yellow for pending status */
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: #dc3545; /* Red for rejected status */
   font-weight: bold;
 }
 

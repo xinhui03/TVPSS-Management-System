@@ -113,8 +113,8 @@ public class TeacherController {
 
 	@PostMapping("/crew/approveApplication")
 	public String approveApplication(@RequestParam("id") int id) {
-			applicationDAO.approve(id);
-			return "redirect:/teacher/crew/manageApplications";
+		applicationDAO.approve(id);
+		return "redirect:/teacher/crew/manageApplications";
 	}
 
 	@PostMapping("/crew/rejectApplication")
@@ -133,7 +133,7 @@ public class TeacherController {
 	@PostMapping("/crew/deleteApplication")
 	public String deleteApplication(@ModelAttribute("id") int id) {
 		applicationDAO.delete(id);
-		return "redirect:/teacher/manageApplications"; // Redirect back to the applications page
+		return "redirect:/teacher/crew/manageApplications"; 
 	}
 
 }

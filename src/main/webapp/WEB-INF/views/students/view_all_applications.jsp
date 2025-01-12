@@ -17,7 +17,7 @@ isELIgnored="false" %>
   <body>
     <div class="container">
       <!-- Sidebar -->
-      <jsp:include page="../components/sidebar.jsp" />
+      <jsp:include page="../components/sidebar_student.jsp" />
 
       <!-- Main Content -->
       <div class="dashboard-content">
@@ -36,9 +36,10 @@ isELIgnored="false" %>
               <p>
                 <strong>Status:</strong>
                 <span
-                  class="${app.isApproved ? 'status-approved' : 'status-pending'}"
+                  class="${app.isApproved ? 'status-approved' : app.isRejected ? 'status-rejected' : 'status-pending'}"
                 >
-                  ${app.isApproved ? 'Approved' : 'Pending'}
+                  ${app.isApproved ? 'Approved' : app.isRejected ? 'Rejected' :
+                  'Pending'}
                 </span>
               </p>
               <div class="card-actions">

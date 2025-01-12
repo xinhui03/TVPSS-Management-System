@@ -39,6 +39,7 @@ public class CrewApplicationDAO_usingHibernate {
         CrewApplication application = currentSession.get(CrewApplication.class, id);
         if (application != null) {
             application.setApproved(true); // Assuming you have an approved field
+            application.setRejected(false);
             currentSession.update(application);
         }
     }
@@ -49,6 +50,7 @@ public class CrewApplicationDAO_usingHibernate {
         CrewApplication application = currentSession.get(CrewApplication.class, id);
         if (application != null) {
             application.setRejected(true);
+            application.setApproved(false);
             currentSession.update(application);
         }
     }

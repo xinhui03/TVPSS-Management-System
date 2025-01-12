@@ -4,10 +4,10 @@ isELIgnored="false" %>
   <head>
     <title>View Application</title>
     <link
-    rel="stylesheet"
-    type="text/css"
-    href="${pageContext.request.contextPath}/css/style_dashboard.css"
-  />
+      rel="stylesheet"
+      type="text/css"
+      href="${pageContext.request.contextPath}/css/style_dashboard.css"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -17,7 +17,7 @@ isELIgnored="false" %>
   <body>
     <div class="container">
       <!-- Sidebar -->
-      <jsp:include page="../components/sidebar.jsp" />
+      <jsp:include page="../components/sidebar_teacher.jsp" />
 
       <!-- Main Content -->
       <div class="dashboard-content">
@@ -50,35 +50,34 @@ isELIgnored="false" %>
             <p>
               <strong>Status:</strong>
               <span
-                class="${application.isApproved != null && application.isApproved ? 'status-approved' : 'status-pending'}"
+                class="${application.isApproved ? 'status-approved' : application.isRejected ? 'status-rejected' : 'status-pending'}"
               >
-                ${application.isApproved != null && application.isApproved ?
-                'Approved' : 'Pending'}
+                ${application.isApproved ? 'Approved' : application.isRejected ?
+                'Rejected' : 'Pending'}
               </span>
             </p>
           </div>
 
           <!-- Approve and Reject buttons -->
           <div class="form-buttons">
-            <form
-              action="${pageContext.request.contextPath}/teacher/approveApplication/${application.id}"
-              method="post"
-              style="display: inline"
-            >
-              <button type="submit">Approve</button>
-            </form>
-            <form
-              action="${pageContext.request.contextPath}/teacher/rejectApplication/${application.id}"
-              method="post"
-              style="display: inline"
-            >
-              <button
-                type="submit"
-                onclick="return confirm('Are you sure you want to reject this application?');"
-              >
-                Reject
+            <form action="${pageContext.request.contextPath}/teacher/crew/approveApplication" method="post" style="display: inline;">
+              <input type="hidden" name="id" value="${application.id}">
+              <button type="submit" class="approve-btn" ${application.isApproved ? 'disabled' : ''}>
+                  Approve
               </button>
-            </form>
+          </form>
+          <form action="${pageContext.request.contextPath}/teacher/crew/rejectApplication" method="post" style="display: inline;">
+              <input type="hidden" name="id" value="${application.id}">
+              <button type="submit" class="reject-btn" ${application.isRejected ? 'disabled' : ''}>
+                  Reject
+              </button>
+          </form>
+          <form action="${pageContext.request.contextPath}/teacher/crew/deleteApplication" method="post" style="display: inline;">
+            <input type="hidden" name="id" value="${application.id}">
+            <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this application?');">
+                Delete
+            </button>
+        </form>
           </div>
         </c:if>
       </div>

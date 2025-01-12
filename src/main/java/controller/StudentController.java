@@ -22,7 +22,7 @@ public class StudentController {
 
     @RequestMapping("/dashboard")
     public String showDashboard() {
-        return "dashboard_student"; // This will forward to dashboard_admin.jsp
+        return "students/dashboard_student"; // This will forward to dashboard_admin.jsp
     }
   
 
@@ -38,7 +38,7 @@ public class StudentController {
         try {
             System.out.println("Attempting to save application: " + application.getStudentName());
             applicationDAO.save(application);
-            return "redirect:/student/crew/viewApplications";
+            return "redirect:/student/crew/viewAllApplications";
         } catch (Exception e) {
             e.printStackTrace(); // Add stack trace
             model.addAttribute("errorMessage", "Error saving application: " + e.getMessage());
