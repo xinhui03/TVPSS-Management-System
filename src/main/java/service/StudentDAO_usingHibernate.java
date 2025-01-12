@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import entity.Teacher;
 import entity.Student;
 import java.util.List;
@@ -83,4 +84,6 @@ public class StudentDAO_usingHibernate {
 		 Session currentSession = sessionFactory.getCurrentSession();
 		 return currentSession.createQuery("from Student").getResultList();
 	 	}
+
+
 	} //end class

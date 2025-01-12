@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
+import entity.CrewApplication;
 import entity.Teacher;
 import entity.Student;
 import service.TeacherDAO_usingHibernate;
 import service.StudentDAO_usingHibernate;
 import service.VersionDAO_usingHibernate;
 import entity.Version;
+import service.CrewApplicationDAO_usingHibernate;
 
 @Controller
 @RequestMapping("/teacher")
@@ -33,6 +35,11 @@ public class TeacherController {
 	
 	@Autowired
 	private VersionDAO_usingHibernate versionDao;
+	@Autowired //spring dependency injection
+	private StudentDAO_usingHibernate cDao_usingHibernate;
+
+	@Autowired
+	private CrewApplicationDAO_usingHibernate applicationDAO;
 	
 	@RequestMapping("/dashboard")
 	public String showDashboard() {
@@ -157,4 +164,54 @@ public class TeacherController {
 	public String showVersionPage(Model model) {
 		return "teacher_school_version";
 	}
+	////////////////////////////////////////////////
+	//crew application//////////////////////////////
+	////////////////////////////////////////////////
+	@GetMapping("/crew/manageApplications")
+	public String manageApplications(
+					@RequestParam(defaultValue = "1") int page,
+					@RequestParam(defaultValue = "10") int size,
+					Model model) {
+			List<CrewApplication> applications = applicationDAO.findAll();
+			
+			// Calculate pagination
+			int totalItems = applications.size();
+			int totalPages = (int) Math.ceil((double) totalItems / size);
+			int startItem = (page - 1) * size;
+			int endItem = Math.min(startItem + size, totalItems);
+			
+			List<CrewApplication> paginatedApplications = applications.subList(startItem, endItem);
+			
+			model.addAttribute("applications", paginatedApplications);
+			model.addAttribute("currentPage", page);
+			model.addAttribute("totalPages", totalPages);
+			
+			return "teachers/manage_applications";
+	}
+
+	@PostMapping("/crew/approveApplication")
+	public String approveApplication(@RequestParam("id") int id) {
+		applicationDAO.approve(id);
+		return "redirect:/teacher/crew/manageApplications";
+	}
+
+	@PostMapping("/crew/rejectApplication")
+	public String rejectApplication(@RequestParam("id") int id) {
+			applicationDAO.reject(id);
+			return "redirect:/teacher/crew/manageApplications";
+	}
+		
+	@GetMapping("/crew/viewApplication")
+	public String viewApplication(@RequestParam("id") int id, Model model) {
+		CrewApplication application = applicationDAO.findById(id);
+		model.addAttribute("application", application);
+		return "teachers/view_application"; // JSP page to display application details
+	}
+
+	@PostMapping("/crew/deleteApplication")
+	public String deleteApplication(@ModelAttribute("id") int id) {
+		applicationDAO.delete(id);
+		return "redirect:/teacher/crew/manageApplications"; 
+	}
+
 }

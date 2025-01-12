@@ -3,7 +3,7 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Teacher Dashboard</title>
+    <title>Student Dashboard</title>
     <link
       rel="stylesheet"
       type="text/css"
@@ -13,18 +13,11 @@ pageEncoding="UTF-8"%>
   <body>
     <div class="container">
       <!-- Sidebar -->
-      <jsp:include page="components/sidebar_teacher.jsp" />
+      <jsp:include page="../components/sidebar_student.jsp" />
 
       <!-- Main Content -->
       <div class="dashboard-content">
-        <div class="header">
-          <img
-            src="${pageContext.request.contextPath}/images/kpm_logo.png"
-            alt="KPM Logo"
-            class="logo"
-          />
-          <h2>TVPSS Management System</h2>
-        </div>
+        <jsp:include page="../components/header.jsp" />
         <div class="purple-box">
           <h3>Dashboard</h3>
           <div class="poster-container">
