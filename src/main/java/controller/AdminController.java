@@ -103,11 +103,19 @@ public class AdminController {
 		return "redirect:/admin/manageuser";
 	}
 	
-	@RequestMapping("/schools")
+	@GetMapping("/schools")
 	public String getSchoolList(Model model) {
-	    List<School> schoolList = teacherDAO.getDistinctSchools();
-	    model.addAttribute("schoolList", schoolList);
-	    return "admin_school_list";
+		try {
+			List<School> schoolList = teacherDAO.getDistinctSchools();
+			System.out.println("DEBUG: Found " + schoolList.size() + " schools");
+			model.addAttribute("schoolList", schoolList);
+			return "admin_school_list";
+		} catch (Exception e) {
+			System.err.println("ERROR: " + e.getMessage());
+			e.printStackTrace();
+			model.addAttribute("error", "An error occurred while fetching school data");
+			return "dashboard_admin";
+		}
 	}
 
 	@GetMapping("/school/details")

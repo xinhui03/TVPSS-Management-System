@@ -11,6 +11,7 @@ import entity.Teacher;
 import entity.School;
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
 @Repository
 @Transactional
@@ -69,12 +70,14 @@ public class TeacherDAO_usingHibernate {
     }
     
     public List<School> getDistinctSchools() {
-        Session session = sessionFactory.getCurrentSession();
-        Query<School> query = session.createQuery(
-            "SELECT DISTINCT new entity.School(t.schoolCode, t.schoolName, t.state) FROM Teacher t", 
-            School.class
-        );
-        return query.getResultList();
+        System.out.println("DEBUG: Fetching distinct schools");
+        try (Session session = sessionFactory.getCurrentSession()) {
+            return session.createQuery("SELECT DISTINCT s FROM School s", School.class)
+                         .getResultList();
+        } catch (Exception e) {
+            System.err.println("ERROR in getDistinctSchools: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
     
     public Teacher findBySchoolId(Long schoolId) {

@@ -1,8 +1,12 @@
+controller\VersionController.class
 controller\AdminController.class
 service\StudentDAO_usingHibernate.class
+entity\Version.class
 service\TeacherDAO_usingHibernate.class
+entity\School.class
 config\SecurityConfig.class
 entity\Student.class
 config\HibernateConfig.class
+service\VersionDAO_usingHibernate.class
 controller\TeacherController.class
 entity\Teacher.class
