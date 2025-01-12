@@ -22,7 +22,7 @@
             <ul class="nav">
                 <li><a href="${pageContext.request.contextPath}/admin/dashboard" class="<%= request.getRequestURI().endsWith("dashboard_admin.jsp") ? "active" : "" %>">Dashboard</a></li>
     <li><a href="#" class="<%= request.getRequestURI().endsWith("school_info_admin.jsp") ? "active" : "" %>">School Information</a></li>
-    <li><a href="#" class="<%= request.getRequestURI().endsWith("school_version_admin.jsp") ? "active" : "" %>">School Version</a></li>
+    <li><a href="${pageContext.request.contextPath}/admin/schools" class="<%= request.getRequestURI().endsWith("admin_school_list.jsp") ? "active" : "" %>">School Version</a></li>
     <li><a href="#" class="<%= request.getRequestURI().endsWith("equipment_info_admin.jsp") ? "active" : "" %>">Equipment Information</a></li>
     <li><a href="${pageContext.request.contextPath}/admin/manageuser" class="<%= request.getRequestURI().endsWith("manage_user_admin.jsp") ? "active" : "" %>">Manage User Information</a></li>
 </ul>

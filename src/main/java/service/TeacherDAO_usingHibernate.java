@@ -1,84 +1,140 @@
 package service;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import entity.Customer;
 import entity.Teacher;
+import entity.School;
 import java.util.List;
+import java.util.Optional;
 
-@Service
+@Repository
+@Transactional
 public class TeacherDAO_usingHibernate {
-	
-	@Autowired //spring dependency injection
-	 private SessionFactory sessionFactory;
-	
-	 @Transactional
-	 public Teacher findById(int id) {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 return currentSession.get(Teacher.class, id);
-	 }
-	 
-	 @Transactional
-	 public void update(Teacher teacher) {
-	     Session currentSession = sessionFactory.getCurrentSession();
-	     currentSession.update(teacher); // Update the teacher entity directly
-	 }
-
-	 
-	 @Transactional
-	 public void save(Teacher teacher) {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 currentSession.saveOrUpdate(teacher);
-	 }
-	 
-	 @Transactional
-	 public void detach(Teacher teacher) {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 currentSession.evict(teacher);
-	 }
-	 
-	 @Transactional
-	 public void update(int id, Teacher teacher) {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 // Retrieve the persistent customer from the database using the provided id
-		 Teacher existingTeacher = currentSession.get(Teacher.class, (long) id);
-		 // Check if the customer exists before updating
-		 if (existingTeacher != null) {
-			 // Update the properties of the existing customer with the new values
-			 existingTeacher.setFullName(teacher.getFullName());
-			 existingTeacher.setSchoolName(teacher.getSchoolName());
-			 existingTeacher.setContactNumber(teacher.getContactNumber());
-			 existingTeacher.setEmail(teacher.getEmail());
-			 existingTeacher.setState(teacher.getState());
-			 existingTeacher.setCity(teacher.getCity());
-
-			 // Save the changes back to the database
-			 currentSession.merge(existingTeacher);
-		 }
-	 }
-	 
-	 @Transactional
-	 public void delete(int id) {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 
-		 // Retrieve the persistent customer from the database using the provided id
-		 Teacher teacherToDelete = currentSession.get(Teacher.class, (int) id);
-		 
-		// Check if the customer exists before deleting
-		 if (teacherToDelete != null) {
-		 // Delete the customer from the database
-		 currentSession.delete(teacherToDelete);
-		 }
-	}
-
-	 
-	 
-	 @Transactional
-	 public List<Teacher> findAll() {
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 return currentSession.createQuery("from Teacher").getResultList();
-	 	}
-	} //end class
+    
+    @Autowired
+    private SessionFactory sessionFactory;
+    
+    public void save(Teacher teacher) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            session.save(teacher);
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving teacher: " + e.getMessage());
+        }
+    }
+    
+    public void update(Teacher teacher) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            session.update(teacher);
+        } catch (Exception e) {
+            throw new RuntimeException("Error updating teacher: " + e.getMessage());
+        }
+    }
+    
+    public Teacher findById(int id) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            return session.get(Teacher.class, id);
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding teacher by ID: " + e.getMessage());
+        }
+    }
+    
+    public List<Teacher> findAll() {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query<Teacher> query = session.createQuery("FROM Teacher ORDER BY id", Teacher.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new RuntimeException("Error retrieving all teachers: " + e.getMessage());
+        }
+    }
+    
+    public void delete(int id) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Teacher teacher = session.get(Teacher.class, id);
+            if (teacher != null) {
+                session.delete(teacher);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error deleting teacher: " + e.getMessage());
+        }
+    }
+    
+    public List<School> getDistinctSchools() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<School> query = session.createQuery(
+            "SELECT DISTINCT new entity.School(t.schoolCode, t.schoolName, t.state) FROM Teacher t", 
+            School.class
+        );
+        return query.getResultList();
+    }
+    
+    public Teacher findBySchoolId(Long schoolId) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query<Teacher> query = session.createQuery(
+                "FROM Teacher t WHERE t.schoolId = :schoolId", 
+                Teacher.class
+            );
+            query.setParameter("schoolId", schoolId);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding teacher by school ID: " + e.getMessage());
+        }
+    }
+    
+    public List<Teacher> findBySchoolName(String schoolName) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query<Teacher> query = session.createQuery(
+                "FROM Teacher t WHERE t.schoolName = :schoolName ORDER BY t.id", 
+                Teacher.class
+            );
+            query.setParameter("schoolName", schoolName);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding teachers by school name: " + e.getMessage());
+        }
+    }
+    
+    public Optional<Teacher> findByEmail(String email) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query<Teacher> query = session.createQuery(
+                "FROM Teacher t WHERE t.email = :email", 
+                Teacher.class
+            );
+            query.setParameter("email", email);
+            return Optional.ofNullable(query.uniqueResult());
+        } catch (Exception e) {
+            throw new RuntimeException("Error finding teacher by email: " + e.getMessage());
+        }
+    }
+    
+    public boolean existsByEmail(String email) {
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Query<Long> query = session.createQuery(
+                "SELECT COUNT(t) FROM Teacher t WHERE t.email = :email", 
+                Long.class
+            );
+            query.setParameter("email", email);
+            return query.uniqueResult() > 0;
+        } catch (Exception e) {
+            throw new RuntimeException("Error checking teacher existence by email: " + e.getMessage());
+        }
+    }
+    
+    public School findSchoolById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(School.class, id);
+    }
+}
