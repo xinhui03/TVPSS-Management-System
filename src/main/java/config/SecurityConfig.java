@@ -57,6 +57,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 			.anyRequest().authenticated()
 			.and()
 			.formLogin().permitAll()
+			.defaultSuccessUrl("/OnlineShopSpringWebApp/admin/dashboard") // Original line
+			.successHandler((request, response, authentication) -> {
+				if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+					response.sendRedirect("/OnlineShopSpringWebApp/admin/dashboard");
+				} else if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_TEACHER"))) {
+					response.sendRedirect("/OnlineShopSpringWebApp/teacher/dashboard");
+				} else if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_STUDENT"))) {
+					response.sendRedirect("/OnlineShopSpringWebApp/student/dashboard");
+				} else {
+					response.sendRedirect("/OnlineShopSpringWebApp/"); // Fallback if no roles match
+				}
+			})
 			.and()
 			.logout().permitAll();
 			
@@ -66,7 +78,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 		protected void registerAuthentication(AuthenticationManagerBuilder authManagerBuilder) throws Exception {
 	        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-	        auth
+	        authManagerBuilder
 	            .inMemoryAuthentication()
 	                .withUser("admin")
                     .password(encoder.encode("admin"))

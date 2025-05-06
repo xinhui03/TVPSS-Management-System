@@ -10,35 +10,7 @@
     <form action="add" method="post" onsubmit="return confirmSubmit();">
         <div class="container">
             <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="profile">
-                    <img src="${pageContext.request.contextPath}/images/icon_teacher.png" alt="Profile Picture" class="profile-pic">
-                    <div class="profile-info">
-                        <h3>Teacher</h3>
-                        <p>hairulsmkmr@gov.my</p> <!-- Fetching email dynamically -->
-                    </div>
-                </div>
-<button class="logout-btn" onclick="window.location.href='${pageContext.request.contextPath}/logout'">Log Out</button>
-                <hr>
-                <ul class="nav">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/teacher/dashboard" class="<%= request.getRequestURI().endsWith("dashboard_teacher.jsp") ? "active" : "" %>">
-                            Dashboard
-                        </a>
-                    </li>
-                    <li><a href="#">School Information</a></li>
-                    <li><a href="#">School Version</a></li>
-                    <li><a href="#">Equipment Information</a></li>
-                    <li>
-                        <a href="${pageContext.request.contextPath}/teacher/manageuser" 
-   class="${pageContext.request.requestURI.endsWith('/teacher/manageuser') ? 'active' : ''}">
-   Manage User Information
-</a>
-
-                    </li>
-                </ul>
-            </div>
-
+             <jsp:include page="components/sidebar_teacher.jsp" />
             <!-- Main Content -->
             <div class="dashboard-content">
                 <div class="header">

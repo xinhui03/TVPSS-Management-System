@@ -26,7 +26,7 @@ public class HibernateConfig implements WebMvcConfigurer {
 	 public DataSource dataSource() {
 	 DriverManagerDataSource dataSource = new DriverManagerDataSource();
 	 dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-	 dataSource.setUrl("jdbc:mysql://localhost:3308/springdb");
+	 dataSource.setUrl("jdbc:mysql://localhost:3306/springdb");
 	 dataSource.setUsername("root");
 	 dataSource.setPassword("");
 	 return dataSource;
